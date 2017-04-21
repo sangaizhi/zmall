@@ -1,0 +1,6 @@
+zmall-boss:8080
+product-category-webb:8081
+zmall-sso:8082
+store-service-web:8083
+admin-web=8084
+zmall-cas=8085

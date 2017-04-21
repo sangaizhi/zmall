@@ -1,0 +1,273 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.zhijie.zmall.admin.dao.RoleDao">
+
+    <resultMap id="RoleMap" type="com.zhijie.zmall.admin.vo.RoleVO">
+        <result property="id" column="id"/>
+        <result property="name" column="name"/>
+        <result property="remark" column="remark"/>
+        <result property="createTime" column="createTime"/>
+        <result property="lastModifyTime" column="lastModifyTime"/>
+        <result property="createUserId" column="createUserId"/>
+        <result property="lastModifyUserId" column="lastModifyUserId"/>
+        <association property="createUser" javaType="com.zhijie.zmall.admin.vo.AdminVO">
+            <id property="id" column="createUserId"/>
+            <result property="name" column="createUserName"/>
+        </association>
+        <association property="modifyUser" javaType="com.zhijie.zmall.admin.vo.AdminVO">
+            <id property="id" column="modifyUserId"/>
+            <result property="name" column="modifyUserName"/>
+        </association>
+    </resultMap>
+
+    <sql id="columns">
+        <![CDATA[
+
+        	id as id,
+        	name as name,
+        	remark as remark,
+        	create_time as createTime,
+        	last_modify_time as lastModifyTime,
+        	create_user_id as createUserId,
+        	last_modify_user_id as lastModifyUserId
+
+        ]]>
+    </sql>
+
+    <sql id="where">
+        <where>
+            <if test="@Ognl@isNotEmpty(id)">
+                <![CDATA[ AND id = #{id} ]]>
+            </if>
+            <if test="@Ognl@isNotEmpty(name)">
+                <![CDATA[ AND name = #{name} ]]>
+            </if>
+            <if test="@Ognl@isNotEmpty(remark)">
+                <![CDATA[ AND remark = #{remark} ]]>
+            </if>
+            <if test="@Ognl@isNotEmpty(createTime)">
+                <![CDATA[ AND create_time = #{createTime} ]]>
+            </if>
+            <if test="@Ognl@isNotEmpty(createTimeBegin)">
+                <![CDATA[ AND create_time >= #{createTimeBegin} ]]>
+            </if>
+            <if test="@Ognl@isNotEmpty(createTimeEnd)">
+                <![CDATA[ AND create_time <= #{createTimeEnd} ]]>
+            </if>
+            <if test="@Ognl@isNotEmpty(lastModifyTime)">
+                <![CDATA[ AND last_modify_time = #{lastModifyTime} ]]>
+            </if>
+            <if test="@Ognl@isNotEmpty(lastModifyTimeBegin)">
+                <![CDATA[ AND last_modify_time >= #{lastModifyTimeBegin} ]]>
+            </if>
+            <if test="@Ognl@isNotEmpty(lastModifyTimeEnd)">
+                <![CDATA[ AND last_modify_time <= #{lastModifyTimeEnd} ]]>
+            </if>
+            <if test="@Ognl@isNotEmpty(createUserId)">
+                <![CDATA[ AND create_user_id = #{createUserId} ]]>
+            </if>
+            <if test="@Ognl@isNotEmpty(lastModifyUserId)">
+                <![CDATA[ AND last_modify_user_id = #{lastModifyUserId} ]]>
+            </if>
+        </where>
+    </sql>
+
+    <select id="getById" resultType="com.zhijie.zmall.admin.vo.RoleVO">
+        SELECT
+        <include refid="columns"/>
+        FROM
+        t_role
+        <where>
+            id = #{id}
+        </where>
+    </select>
+
+    <select id="getByCondition" resultType="com.zhijie.zmall.admin.vo.RoleVO">
+        SELECT
+        <include refid="columns"/>
+        FROM
+        t_role
+        <include refid="where"/>
+    </select>
+
+    <select id="queryList" resultMap="RoleMap">
+        SELECT
+        <include refid="columns"/>
+        FROM
+        t_role
+        <include refid="where"/>
+    </select>
+
+    <select id="count" resultType="long">
+        SELECT
+        count(1)
+        FROM
+        t_role
+        <include refid="where"/>
+    </select>
+
+    <select id="queryPage" resultMap="RoleMap">
+        SELECT
+        <include refid="columns"/>
+        FROM
+        t_role
+        <include refid="where"/>
+        <!-- {startPosition}和{pageSize}前面加上"#"号 -->
+        LIMIT {startPosition},{pageSize}
+    </select>
+
+    <insert id="save" useGeneratedKeys="true" keyProperty="id">
+	    INSERT INTO t_role (
+	        name,
+	        remark,
+	        create_time,
+	        last_modify_time,
+	        create_user_id,
+	        last_modify_user_id
+	    ) VALUES (
+	        #{name},
+	        #{remark},
+	        #{createTime},
+	        #{lastModifyTime},
+	        #{createUserId},
+	        #{lastModifyUserId}
+	    )
+    </insert>
+
+    <insert id="saveBatch">
+        INSERT INTO t_role (
+        name,
+        remark,
+        create_time,
+        last_modify_time,
+        create_user_id,
+        last_modify_user_id
+        ) VALUES
+        <foreach collection="list" item="item" index="index" separator=",">
+            (
+            #{item.name},
+            #{item.remark},
+            #{item.createTime},
+            #{item.lastModifyTime},
+            #{item.createUserId},
+            #{item.lastModifyUserId}
+            )
+        </foreach>
+    </insert>
+
+    <update id="updateById">
+        UPDATE
+        t_role
+        <set>
+            <if test="name != null">
+                <![CDATA[ name = #{name} ]]>,
+            </if>
+            <if test="remark != null">
+                <![CDATA[ remark = #{remark} ]]>,
+            </if>
+            <if test="createTime != null">
+                <![CDATA[ create_time = #{createTime} ]]>,
+            </if>
+            <if test="lastModifyTime != null">
+                <![CDATA[ last_modify_time = #{lastModifyTime} ]]>,
+            </if>
+            <if test="createUserId != null">
+                <![CDATA[ create_user_id = #{createUserId} ]]>,
+            </if>
+            <if test="lastModifyUserId != null">
+                <![CDATA[ last_modify_user_id = #{lastModifyUserId} ]]>
+            </if>
+        </set>
+        <where>
+            id = #{id}
+        </where>
+    </update>
+
+    <delete id="deleteById">
+        DELETE
+        FROM
+        t_role
+        <where>
+            id = #{id}
+        </where>
+    </delete>
+
+    <delete id="deleteBatchByIds">
+        DELETE
+        FROM
+        t_role
+        WHERE
+        id IN
+        <foreach collection="list" index="index" item="item" open="(" separator="," close=")">
+            #{item}
+        </foreach>
+    </delete>
+
+    <select id="getDetailById" resultType="com.zhijie.zmall.admin.vo.RoleVO">
+        SELECT
+        <include refid="columns"/>
+        FROM
+        t_role
+        <where>
+            id = #{id}
+        </where>
+    </select>
+
+    <select id="getDetailByCondition" resultType="com.zhijie.zmall.admin.vo.RoleVO">
+        SELECT
+        <include refid="columns"/>
+        FROM
+        t_role
+        <include refid="where"/>
+    </select>
+
+    <select id="queryDetailList" resultMap="RoleMap">
+        SELECT
+        role.id as id,
+        role.name as name,
+        role.remark as remark,
+        role.create_time as createTime,
+        role.last_modify_time as lastModifyTime,
+        role.create_user_id as createUserId,
+        role.last_modify_user_id as lastModifyUserId,
+        ca.id AS createUserId,
+        ca.name AS createUserName,
+        ea.id AS modifyUserId,
+        ea.name AS modifyUserName
+        FROM
+        t_role role LEFT JOIN t_admin ca ON role.create_user_id = ca.id
+        LEFT JOIN t_admin ea ON role.last_modify_user_id = ea.id
+        <include refid="where"/>
+    </select>
+
+    <select id="countDetail" resultType="long">
+        SELECT
+        count(1)
+        FROM
+        t_role
+        <include refid="where"/>
+    </select>
+
+    <select id="queryDetailPage" resultMap="RoleMap">
+        SELECT
+        role.id as id,
+        role.name as name,
+        role.remark as remark,
+        role.create_time as createTime,
+        role.last_modify_time as lastModifyTime,
+        role.create_user_id as createUserId,
+        role.last_modify_user_id as lastModifyUserId,
+        ca.id AS createUserId,
+        ca.name AS createUserName,
+        ea.id AS modifyUserId,
+        ea.name AS modifyUserName
+        FROM
+        t_role role LEFT JOIN t_admin ca ON role.create_user_id = ca.id
+        LEFT JOIN t_admin ea ON role.last_modify_user_id = ea.id
+        <include refid="where"/>
+        <!-- {startPosition}和{pageSize}前面加上"#"号 -->
+        LIMIT #{startPosition},#{pageSize}
+    </select>
+</mapper>
+

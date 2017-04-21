@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="dataSourceStorageLocal">
+    <data-source name="MySQL - zmall@localhost" uuid="576de3bb-0c26-4f5c-8b50-259117266a22">
+      <secret-storage>master_key</secret-storage>
+      <user-name>root</user-name>
+      <schema-pattern>zmall.*</schema-pattern>
+      <default-schemas>zmall.*</default-schemas>
+    </data-source>
+  </component>
+</project>

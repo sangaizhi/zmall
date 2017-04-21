@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/admin-module/admin-module.iml" filepath="$PROJECT_DIR$/admin-module/admin-module.iml" />
+      <module fileurl="file://$PROJECT_DIR$/admin-module/admin-service/admin-service.iml" filepath="$PROJECT_DIR$/admin-module/admin-service/admin-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/admin-module/admin-service-impl/admin-service-impl.iml" filepath="$PROJECT_DIR$/admin-module/admin-service-impl/admin-service-impl.iml" />
+      <module fileurl="file://$PROJECT_DIR$/admin-module/admin-web/admin-web.iml" filepath="$PROJECT_DIR$/admin-module/admin-web/admin-web.iml" />
+      <module fileurl="file://$PROJECT_DIR$/comment-module/comment-module.iml" filepath="$PROJECT_DIR$/comment-module/comment-module.iml" />
+      <module fileurl="file://$PROJECT_DIR$/zmall-common/common-service/common-service.iml" filepath="$PROJECT_DIR$/zmall-common/common-service/common-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/common-module/common-service/common-service.iml" filepath="$PROJECT_DIR$/common-module/common-service/common-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/zmall-common/commons/commons.iml" filepath="$PROJECT_DIR$/zmall-common/commons/commons.iml" />
+      <module fileurl="file://$PROJECT_DIR$/zmall-common/commons/commos.iml" filepath="$PROJECT_DIR$/zmall-common/commons/commos.iml" />
+      <module fileurl="file://$PROJECT_DIR$/customer-module/customer_module.iml" filepath="$PROJECT_DIR$/customer-module/customer_module.iml" />
+      <module fileurl="file://$PROJECT_DIR$/favorities-module/favorities-module.iml" filepath="$PROJECT_DIR$/favorities-module/favorities-module.iml" />
+      <module fileurl="file://$PROJECT_DIR$/grade-module/grade-module.iml" filepath="$PROJECT_DIR$/grade-module/grade-module.iml" />
+      <module fileurl="file://$PROJECT_DIR$/order-module/order-module.iml" filepath="$PROJECT_DIR$/order-module/order-module.iml" />
+      <module fileurl="file://$PROJECT_DIR$/product-category-module/product-category-module.iml" filepath="$PROJECT_DIR$/product-category-module/product-category-module.iml" />
+      <module fileurl="file://$PROJECT_DIR$/product-category-module/product-category-service/product-category-service.iml" filepath="$PROJECT_DIR$/product-category-module/product-category-service/product-category-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/product-category-module/product-category-serviceImpl/product-category-serviceImpl.iml" filepath="$PROJECT_DIR$/product-category-module/product-category-serviceImpl/product-category-serviceImpl.iml" />
+      <module fileurl="file://$PROJECT_DIR$/product-category-module/product-category-web/product-category-web.iml" filepath="$PROJECT_DIR$/product-category-module/product-category-web/product-category-web.iml" />
+      <module fileurl="file://$PROJECT_DIR$/product-module/product-module.iml" filepath="$PROJECT_DIR$/product-module/product-module.iml" />
+      <module fileurl="file://$PROJECT_DIR$/product-norm-module/product-norm-module.iml" filepath="$PROJECT_DIR$/product-norm-module/product-norm-module.iml" />
+      <module fileurl="file://$PROJECT_DIR$/product-pricing-module/product-pricing-module.iml" filepath="$PROJECT_DIR$/product-pricing-module/product-pricing-module.iml" />
+      <module fileurl="file://$PROJECT_DIR$/shopping-card-module/shopping-card-module.iml" filepath="$PROJECT_DIR$/shopping-card-module/shopping-card-module.iml" />
+      <module fileurl="file://$PROJECT_DIR$/store-module/store-serviceImpl/store-serviceImpl.iml" filepath="$PROJECT_DIR$/store-module/store-serviceImpl/store-serviceImpl.iml" />
+      <module fileurl="file://$PROJECT_DIR$/user-module/user-module.iml" filepath="$PROJECT_DIR$/user-module/user-module.iml" />
+      <module fileurl="file://$PROJECT_DIR$/user-module/user-service/user-service.iml" filepath="$PROJECT_DIR$/user-module/user-service/user-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/user-module/user-service-impl/user-service-impl.iml" filepath="$PROJECT_DIR$/user-module/user-service-impl/user-service-impl.iml" />
+      <module fileurl="file://$PROJECT_DIR$/zmall.iml" filepath="$PROJECT_DIR$/zmall.iml" />
+      <module fileurl="file://$PROJECT_DIR$/zmall-boss/zmall-boss.iml" filepath="$PROJECT_DIR$/zmall-boss/zmall-boss.iml" />
+      <module fileurl="file://$PROJECT_DIR$/zmall-cas/zmall-cas.iml" filepath="$PROJECT_DIR$/zmall-cas/zmall-cas.iml" />
+      <module fileurl="file://$PROJECT_DIR$/zmall-common/zmall-common.iml" filepath="$PROJECT_DIR$/zmall-common/zmall-common.iml" />
+      <module fileurl="file://$PROJECT_DIR$/zmall-sso/zmall-sso.iml" filepath="$PROJECT_DIR$/zmall-sso/zmall-sso.iml" />
+    </modules>
+  </component>
+</project>

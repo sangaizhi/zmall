@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="zmall-sso:war">
+    <output-path>$PROJECT_DIR$/zmall-sso/target</output-path>
+    <root id="archive" name="zmall-boss.war">
+      <element id="artifact" artifact-name="zmall-sso:war exploded" />
+    </root>
+  </artifact>
+</component>

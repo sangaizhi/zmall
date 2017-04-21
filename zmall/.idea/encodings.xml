@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding" defaultCharsetForPropertiesFiles="UTF-8">
+    <file url="file://$PROJECT_DIR$" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/admin-module" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/admin-module/admin-service" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/admin-module/admin-service-impl" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/admin-module/admin-web" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/comment-module" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/customer-module" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/favorities-module" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/grade-module" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/order-module" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/product-category-module" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/product-category-module/product-category-service" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/product-category-module/product-category-serviceImpl" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/product-category-module/product-category-web" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/product-module" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/product-norm-module" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/product-pricing-module" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/shopping-card-module" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/user-module" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/user-module/user-service" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/user-module/user-service-impl" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/zmall-boss" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/zmall-cas" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/zmall-common" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/zmall-common/common-service" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/zmall-common/commons" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/zmall-sso" charset="UTF-8" />
+    <file url="PROJECT" charset="UTF-8" />
+  </component>
+</project>

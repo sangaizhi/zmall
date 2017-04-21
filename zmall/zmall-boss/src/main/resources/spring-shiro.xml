@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd">
+
+    <bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
+        <property name="securityManager" ref="securityManager"/>
+        <property name="loginUrl" value="/login.html"/>
+        <property name="filters">
+            <map>
+                <!--<entry key="authc" value-ref="authorizationFilter"/>-->
+                <entry key="authc" value-ref="shiroAuthenticationFilter"/>
+            </map>
+        </property>
+        <property name="filterChainDefinitions">
+            <value>
+                /system/captcha=anon
+                /static/**=anon
+                /system/logout = anon
+                /system/login=anon
+                /oauth/**=anon
+                /error/**=anon
+                /v2/**/=anon
+                /webjars/**=anon
+                /swagger-resources/**=anon
+                /swagger-ui.html/**=anon
+                /system/welcome=authc
+                /**=authc
+            </value>
+        </property>
+    </bean>
+
+
+    <!-- 配置一个 bean, 该 bean 实际上是一个 Map. 通过实例工厂方法的方式 -->
+    <bean id="filterChainDefinitionMap"
+          factory-bean="filterChainDefinitionMapBuilder" factory-method="buildFilterChainDefinitionMap"></bean>
+
+    <bean id="filterChainDefinitionMapBuilder"
+          class="com.zhijie.zmall.boss.security.shiro.FilterChainDefinitionMapBuilder"></bean>
+
+
+    <bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
+        <property name="realms">
+            <list>
+                <ref bean="shiroRealm"></ref>
+            </list>
+        </property>
+        <property name="cacheManager" ref="cacheManager"/>
+        <property name="sessionManager" ref="sessionManager"/>
+    </bean>
+
+
+    <bean id="shiroRealm" class="com.zhijie.zmall.boss.security.shiro.ShiroRealm">
+        <property name="credentialsMatcher" ref="hashedCredentialsMatcher"/>
+    </bean>
+
+
+    <bean id="redisSessionDao" class="com.zhijie.zmall.boss.security.shiro.RedisSessionDao"></bean>
+
+    <!-- 配置缓存管理器 -->
+    <bean id="cacheManager" class="com.zhijie.zmall.boss.security.shiro.RedisCacheManager">
+        <property name="redisTemplate" ref="redisTemplate"/>
+    </bean>
+
+    <!-- 认证匹配加密算法 -->
+    <bean id="hashedCredentialsMatcher" class="org.apache.shiro.authc.credential.HashedCredentialsMatcher">
+        <property name="hashAlgorithmName" value="md5"/>
+        <property name="hashIterations" value="2"/>
+    </bean>
+
+
+
+    <bean id="sessionManager" class="org.apache.shiro.web.session.mgt.DefaultWebSessionManager">
+        <property name="globalSessionTimeout" value="${EXPIRE_MILLISECONDS}"/>
+        <property name="sessionDAO" ref="redisSessionDao"/>
+    </bean>
+
+    <!-- 权限过滤器
+    <bean id="shiroAuthorizationFilter" class="com.zhijie.zmall.boss.security.shiro.ShiroAuthorizationFilter"></bean>
+     -->
+    <!-- 认证过滤器-->
+    <bean id="shiroAuthenticationFilter" class="com.zhijie.zmall.boss.security.shiro.ShiroAuthenticationFilter"></bean>
+
+    <!-- 配置 LifecycleBeanPostProcessor. 可以自定的来调用配置在 Spring IOC 容器中 shiro bean 的生命周期方法.  -->
+    <bean id="lifecycleBeanPostProcessor" class="org.apache.shiro.spring.LifecycleBeanPostProcessor"/>
+    <!--启用 IOC 容器中使用 shiro 的注解. 但必须在配置了 LifecycleBeanPostProcessor 之后才可以使用.  -->
+    <bean class="org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreator"
+          depends-on="lifecycleBeanPostProcessor"/>
+    <bean class="org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor">
+        <property name="securityManager" ref="securityManager"/>
+    </bean>
+
+
+</beans>

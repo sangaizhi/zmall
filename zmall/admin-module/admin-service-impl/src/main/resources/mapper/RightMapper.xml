@@ -1,0 +1,348 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.zhijie.zmall.admin.dao.RightDao">
+
+    <resultMap id="RightMap" type="com.zhijie.zmall.admin.vo.RightVO">
+        <result property="id" column="id"/>
+        <result property="name" column="name"/>
+        <result property="code" column="code"/>
+        <result property="pos" column="pos"/>
+        <result property="url" column="url"/>
+        <result property="moduleId" column="moduleId"/>
+        <result property="iconClass" column="iconClass"/>
+        <result property="orderNumber" column="orderNumber"/>
+        <result property="type" column="type"/>
+        <result property="parentId" column="parentId"/>
+        <result property="common" column="common"/>
+        <result property="remark" column="remark"/>
+        <result property="createTime" column="createTime"/>
+        <result property="lastModifyTime" column="lastModifyTime"/>
+        <result property="createUserId" column="createUserId"/>
+        <result property="lastModifyUserId" column="lastModifyUserId"/>
+    </resultMap>
+    
+    <sql id="columns">
+        <![CDATA[
+        	id as id,
+        	name as name,
+        	code as code,
+        	pos as pos,
+        	url as url,
+        	module_id as moduleId,
+        	icon_class as iconClass,
+        	order_number as orderNumber,
+        	type as type,
+        	parent_id as parentId,
+        	common as common,
+        	remark as remark,
+        	create_time as createTime,
+        	last_modify_time as lastModifyTime,
+        	create_user_id as createUserId,
+        	last_modify_user_id as lastModifyUserId
+        ]]>
+    </sql>
+    
+    <sql id="where">
+    	<where>
+           	<if test="@Ognl@isNotEmpty(id)">
+            	<![CDATA[ AND id = #{id} ]]>
+            </if>
+           	<if test="@Ognl@isNotEmpty(name)">
+            	<![CDATA[ AND name = #{name} ]]>
+            </if>
+           	<if test="@Ognl@isNotEmpty(code)">
+            	<![CDATA[ AND code = #{code} ]]>
+            </if>
+           	<if test="@Ognl@isNotEmpty(pos)">
+            	<![CDATA[ AND pos = #{pos} ]]>
+            </if>
+           	<if test="@Ognl@isNotEmpty(url)">
+            	<![CDATA[ AND url = #{url} ]]>
+            </if>
+           	<if test="@Ognl@isNotEmpty(moduleId)">
+            	<![CDATA[ AND module_id = #{moduleId} ]]>
+            </if>
+           	<if test="@Ognl@isNotEmpty(iconClass)">
+            	<![CDATA[ AND icon_class = #{iconClass} ]]>
+            </if>
+           	<if test="@Ognl@isNotEmpty(orderNumber)">
+            	<![CDATA[ AND order_number = #{orderNumber} ]]>
+            </if>
+           	<if test="@Ognl@isNotEmpty(type)">
+            	<![CDATA[ AND type = #{type} ]]>
+            </if>
+           	<if test="@Ognl@isNotEmpty(parentId)">
+            	<![CDATA[ AND parent_id = #{parentId} ]]>
+            </if>
+           	<if test="@Ognl@isNotEmpty(common)">
+            	<![CDATA[ AND common = #{common} ]]>
+            </if>
+           	<if test="@Ognl@isNotEmpty(remark)">
+            	<![CDATA[ AND remark = #{remark} ]]>
+            </if>
+           	<if test="@Ognl@isNotEmpty(createTime)">
+           		<![CDATA[ AND create_time = #{createTime} ]]>
+           	</if>
+           	<if test="@Ognl@isNotEmpty(createTimeBegin)">
+           		<![CDATA[ AND create_time >= #{createTimeBegin} ]]>
+           	</if>
+           	<if test="@Ognl@isNotEmpty(createTimeEnd)">
+            	<![CDATA[ AND create_time <= #{createTimeEnd} ]]>
+           	</if>
+           	<if test="@Ognl@isNotEmpty(lastModifyTime)">
+           		<![CDATA[ AND last_modify_time = #{lastModifyTime} ]]>
+           	</if>
+           	<if test="@Ognl@isNotEmpty(lastModifyTimeBegin)">
+           		<![CDATA[ AND last_modify_time >= #{lastModifyTimeBegin} ]]>
+           	</if>
+           	<if test="@Ognl@isNotEmpty(lastModifyTimeEnd)">
+            	<![CDATA[ AND last_modify_time <= #{lastModifyTimeEnd} ]]>
+           	</if>
+           	<if test="@Ognl@isNotEmpty(createUserId)">
+            	<![CDATA[ AND create_user_id = #{createUserId} ]]>
+            </if>
+           	<if test="@Ognl@isNotEmpty(lastModifyUserId)">
+            	<![CDATA[ AND last_modify_user_id = #{lastModifyUserId} ]]>
+            </if>
+        </where>
+    </sql>
+    
+    <select id="getById" resultType="com.zhijie.zmall.admin.vo.RightVO">
+        SELECT 
+        	<include refid="columns" />
+        FROM
+            t_right
+        <where> 
+            id = #{id} 
+        </where>
+    </select>
+    
+    <select id="getByCondition" resultType="com.zhijie.zmall.admin.vo.RightVO">
+        SELECT
+            <include refid="columns" />
+        FROM
+            t_right 
+        <include refid="where"/>
+    </select>
+    
+    <select id="queryList" resultMap="RightMap">
+        SELECT
+            <include refid="columns" />
+        FROM
+            t_right 
+        <include refid="where"/>
+    </select>
+        
+    <select id="count" resultType="long">
+	    SELECT
+	        count(1)
+	    FROM
+	        t_right
+        <include refid="where"/>
+    </select>
+    
+    <select id="queryPage" resultMap="RightMap">
+        SELECT
+            <include refid="columns" />
+        FROM
+            t_right 
+        <include refid="where"/>
+	    <!-- {startPosition}和{pageSize}前面加上"#"号 --> 
+        LIMIT {startPosition},{pageSize}
+    </select>
+
+    <insert id="save" useGeneratedKeys="true" keyProperty="id">
+	    INSERT INTO t_right (
+	        name,
+	        code,
+	        pos,
+	        url,
+	        module_id,
+	        icon_class,
+	        order_number,
+	        type,
+	        parent_id,
+	        common,
+	        remark,
+	        create_time,
+	        last_modify_time,
+	        create_user_id,
+	        last_modify_user_id
+	    ) VALUES (
+	        #{name},
+	        #{code},
+	        #{pos},
+	        #{url},
+	        #{moduleId},
+	        #{iconClass},
+	        #{orderNumber},
+	        #{type},
+	        #{parentId},
+	        #{common},
+	        #{remark},
+	        #{createTime},
+	        #{lastModifyTime},
+	        #{createUserId},
+	        #{lastModifyUserId}
+	    )
+    </insert>
+
+    <insert id="saveBatch">
+        INSERT INTO t_right (
+            name,
+            code,
+            pos,
+            url,
+            module_id,
+            icon_class,
+            order_number,
+            type,
+            parent_id,
+            common,
+            remark,
+            create_time,
+            last_modify_time,
+            create_user_id,
+            last_modify_user_id
+        ) VALUES
+        <foreach collection="list" item="item" index="index" separator=",">
+            (
+                                #{item.name},
+                #{item.code},
+                #{item.pos},
+                #{item.url},
+                #{item.moduleId},
+                #{item.iconClass},
+                #{item.orderNumber},
+                #{item.type},
+                #{item.parentId},
+                #{item.common},
+                #{item.remark},
+                #{item.createTime},
+                #{item.lastModifyTime},
+                #{item.createUserId},
+                #{item.lastModifyUserId}
+            )
+        </foreach>
+    </insert>
+    
+    <update id="updateById">
+    	UPDATE
+        	t_right
+    	<set>
+        	<if test="name != null">
+        		<![CDATA[ name = #{name} ]]>,
+        	</if>
+        	<if test="code != null">
+        		<![CDATA[ code = #{code} ]]>,
+        	</if>
+        	<if test="pos != null">
+        		<![CDATA[ pos = #{pos} ]]>,
+        	</if>
+        	<if test="url != null">
+        		<![CDATA[ url = #{url} ]]>,
+        	</if>
+        	<if test="moduleId != null">
+        		<![CDATA[ module_id = #{moduleId} ]]>,
+        	</if>
+        	<if test="iconClass != null">
+        		<![CDATA[ icon_class = #{iconClass} ]]>,
+        	</if>
+        	<if test="orderNumber != null">
+        		<![CDATA[ order_number = #{orderNumber} ]]>,
+        	</if>
+        	<if test="type != null">
+        		<![CDATA[ type = #{type} ]]>,
+        	</if>
+        	<if test="parentId != null">
+        		<![CDATA[ parent_id = #{parentId} ]]>,
+        	</if>
+        	<if test="common != null">
+        		<![CDATA[ common = #{common} ]]>,
+        	</if>
+        	<if test="remark != null">
+        		<![CDATA[ remark = #{remark} ]]>,
+        	</if>
+        	<if test="createTime != null">
+        		<![CDATA[ create_time = #{createTime} ]]>,
+        	</if>
+        	<if test="lastModifyTime != null">
+        		<![CDATA[ last_modify_time = #{lastModifyTime} ]]>,
+        	</if>
+        	<if test="createUserId != null">
+        		<![CDATA[ create_user_id = #{createUserId} ]]>,
+        	</if>
+        	<if test="lastModifyUserId != null">
+        		<![CDATA[ last_modify_user_id = #{lastModifyUserId} ]]>
+        	</if>
+    	</set>
+    	<where>
+        	id = #{id}
+    	</where>
+    </update>
+    
+    <delete id="deleteById">
+	    DELETE
+	    FROM
+	        t_right
+	    <where>
+	        id = #{id} 
+	    </where>
+    </delete>
+    
+    <delete id="deleteBatchByIds">
+        DELETE
+        FROM
+            t_right
+        WHERE
+            id IN
+        <foreach collection="list" index="index" item="item" open="(" separator="," close=")">
+#{item}        </foreach>
+    </delete>
+    
+   	<select id="getDetailById" resultType="com.zhijie.zmall.admin.vo.RightVO">
+        SELECT 
+        	<include refid="columns" />
+        FROM
+            t_right
+        <where> 
+            id = #{id} 
+        </where>
+    </select>
+    
+    <select id="getDetailByCondition" resultType="com.zhijie.zmall.admin.vo.RightVO">
+        SELECT
+            <include refid="columns" />
+        FROM
+            t_right 
+        <include refid="where"/>
+    </select>
+    
+    <select id="queryDetailList" resultMap="RightMap">
+        SELECT
+            <include refid="columns" />
+        FROM
+            t_right 
+        <include refid="where"/>
+    </select>
+        
+    <select id="countDetail" resultType="long">
+	    SELECT
+	        count(1)
+	    FROM
+	        t_right
+        <include refid="where"/>
+    </select>
+    
+    <select id="queryDetailPage" resultMap="RightMap">
+        SELECT
+            <include refid="columns" />
+        FROM
+            t_right 
+        <include refid="where"/>
+	    <!-- {startPosition}和{pageSize}前面加上"#"号 --> 
+        LIMIT {startPosition},{pageSize}
+    </select>
+</mapper>
+

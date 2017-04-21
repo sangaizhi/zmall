@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <resourceExtensions />
+    <wildcardResourcePatterns>
+      <entry name="!?*.java" />
+      <entry name="!?*.form" />
+      <entry name="!?*.class" />
+      <entry name="!?*.groovy" />
+      <entry name="!?*.scala" />
+      <entry name="!?*.flex" />
+      <entry name="!?*.kt" />
+      <entry name="!?*.clj" />
+      <entry name="!?*.aj" />
+    </wildcardResourcePatterns>
+    <annotationProcessing>
+      <profile default="true" name="Default" enabled="false">
+        <processorPath useClasspath="true" />
+      </profile>
+      <profile default="false" name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="true" />
+        <module name="admin-service" />
+        <module name="admin-service-impl" />
+        <module name="admin-web" />
+        <module name="comment-module" />
+        <module name="common-service" />
+        <module name="commons" />
+        <module name="commos" />
+        <module name="customer-module" />
+        <module name="customer_module" />
+        <module name="favorities-module" />
+        <module name="grade-module" />
+        <module name="order-module" />
+        <module name="product-category-service" />
+        <module name="product-category-serviceImpl" />
+        <module name="product-category-web" />
+        <module name="product-module" />
+        <module name="product-norm-module" />
+        <module name="product-pricing-module" />
+        <module name="shopping-card-module" />
+        <module name="store-service-impl" />
+        <module name="store-serviceImpl" />
+        <module name="user-service" />
+        <module name="user-service-impl" />
+        <module name="zmall-boss" />
+        <module name="zmall-cas" />
+        <module name="zmall-interface" />
+        <module name="zmall-interface-impl" />
+        <module name="zmall-sso" />
+      </profile>
+      <profile default="false" name="Annotation profile for zmall-web" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="true" />
+      </profile>
+      <profile default="false" name="Annotation profile for zmall-admin-web" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="true" />
+        <module name="zmall-admin-web" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel target="1.7">
+      <module name="admin-module" target="1.7" />
+      <module name="admin-service" target="1.7" />
+      <module name="admin-service-impl" target="1.7" />
+      <module name="admin-web" target="1.7" />
+      <module name="comment-module" target="1.7" />
+      <module name="common-module" target="1.7" />
+      <module name="common-service" target="1.7" />
+      <module name="commons" target="1.7" />
+      <module name="commos" target="1.7" />
+      <module name="customer-module" target="1.7" />
+      <module name="customer_module" target="1.7" />
+      <module name="favorities-module" target="1.7" />
+      <module name="grade-module" target="1.7" />
+      <module name="order-module" target="1.7" />
+      <module name="product-category-module" target="1.7" />
+      <module name="product-category-service" target="1.7" />
+      <module name="product-category-serviceImpl" target="1.7" />
+      <module name="product-category-web" target="1.7" />
+      <module name="product-module" target="1.7" />
+      <module name="product-norm-module" target="1.7" />
+      <module name="product-pricing-module" target="1.7" />
+      <module name="shopping-card-module" target="1.7" />
+      <module name="store-module" target="1.7" />
+      <module name="store-service" target="1.7" />
+      <module name="store-service-impl" target="1.7" />
+      <module name="store-service-web" target="1.7" />
+      <module name="store-serviceImpl" target="1.7" />
+      <module name="user-module" target="1.7" />
+      <module name="user-service" target="1.7" />
+      <module name="user-service-impl" target="1.7" />
+      <module name="zmall" target="1.7" />
+      <module name="zmall-boss" target="1.7" />
+      <module name="zmall-cas" target="1.7" />
+      <module name="zmall-common" target="1.7" />
+      <module name="zmall-comon" target="1.7" />
+      <module name="zmall-sso" target="1.7" />
+      <module name="zmall-web" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+</project>
